@@ -10,8 +10,11 @@ const createTimerAnimator = () => {
     let hour = Math.floor(seconds / 60 / 60)
     let minutes = Math.floor((seconds - (hour * 60 *60) )/ 60)
     let second = seconds - ((hour * 60 * 60)+ (minutes * 60))
-
- interval = setInterval(() =>{
+    interval = setInterval(() =>{
+   if(hour === 0 && minutes === 0 && second === 0)
+   {
+     clearInterval(interval)
+   }
     console.log("[+] часы" +  ' ' + hour,"[+] минуты" +  ' ' + minutes, "[+] секунды" +  ' ' + second);
     timerEl.textContent = hour + ':\n' + minutes + ':\n' + second
     if(second === 0)
@@ -24,7 +27,6 @@ const createTimerAnimator = () => {
       second = 60
       minutes = minutes -1;
     }
-    console.log(second);
     seconds = seconds - 1
     second--
     
