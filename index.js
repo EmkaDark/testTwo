@@ -37,6 +37,12 @@ const createTimerAnimator = () => {
 const animateTimer = createTimerAnimator();
 
 inputEl.addEventListener('input', () => {
+  regex = /[0-9]/
+  for (let i = 0; i <= inputEl.value.length; i++) {
+    if (!regex.test(inputEl[i])) {
+      inputEl.value = inputEl.value.replace(/[^\d]/g, '')
+    }
+  }
   // Очистите input так, чтобы в значении
   // оставались только числа
 });
